@@ -25,6 +25,7 @@ matrix:
     - { stage: test, python: 3.6, env: TOXENV=pylint }
     - { stage: test, python: 3.6, env: TOXENV=readme }
     - { stage: build_and_package_sanity, python: 3.6, env: SANITY_CHECK=1 }
+    - { stage: test, python: 3.7-dev, env: DJANGO=2.0 }
   allow_failures:
     - env: TOXENV=pylint
     - python: 2.7
@@ -33,7 +34,6 @@ install:
   - pip install tox-travis
 script:
   - |
-
         if [ -z "$SANITY_CHECK" ]; then
             tox
         else
